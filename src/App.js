@@ -32,6 +32,16 @@ class App extends Component {
     })
   }
 
+  deleteItem(id){
+    const list = [...this.state.list];
+
+    const newList = list.filter(item => item.id !== id);
+
+    this.setState({
+      list:newList
+    });
+  }
+
   render() { 
     return (
       <div className="App">
@@ -55,6 +65,9 @@ class App extends Component {
               return(
                 <li key={item.id}>
                   {item.value}
+                  <button onClick={()=> this.deleteItem(item.id)}>
+                    x
+                  </button>
                 </li>
               )
             })}
